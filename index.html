@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Sports Streaming</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Live Sports Streaming - Watch Live HD">
+    <meta property="og:description" content="Watch unlimited live sports streams instantly. Premium Live Streaming • No Buffer • HD Quality.">
+    <meta property="og:image" content="tes2.webp">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:url" content="https://baseball2026.playrushgo.site">
+    <meta property="fb:app_id" content="">
+
+    <!-- Popunder -->
+    <script src="https://pl29788928.effectivecpmnetwork.com/9e/5e/5b/9e5e5b3641a3217b4500bbcd13ce35d9.js"></script>
+
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+
+        body{
+            font-family:Arial,sans-serif;
+            color:#fff;
+            text-align:center;
+            background:
+                linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.92)),
+                url('realistic-neon-lights-background_52683-60202.webp');
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+            min-height:100vh;
+            display:flex;
+            flex-direction:column;
+        }
+
+        .banner-top{
+            width:100%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:8px 0;
+            background:rgba(0,0,0,0.5);
+            flex-shrink:0;
+        }
+
+        .container{
+            flex:1;
+            width:100%;
+            padding:18px 16px 10px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+        }
+
+        .banner-bottom{
+            width:100%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:8px 0;
+            background:rgba(0,0,0,0.4);
+            margin-top:14px;
+        }
+
+        /* 🔴 LIVE BADGE */
+        .live-badge{
+            background:linear-gradient(45deg,#ff0000,#ff3c3c);
+            padding:9px 20px;
+            border-radius:40px;
+            font-weight:bold;
+            letter-spacing:1px;
+            display:inline-block;
+            margin-bottom:10px;
+            box-shadow:0 0 18px rgba(255,0,0,0.8);
+            animation:blink 1s infinite;
+            color:#fff;
+            text-decoration:none;
+        }
+
+        @keyframes blink{
+            0%{opacity:1;}50%{opacity:0.6;}100%{opacity:1;}
+        }
+
+        h1{
+            font-size:36px;
+            margin-bottom:6px;
+            text-shadow:0 0 15px rgba(255,255,255,0.35);
+        }
+
+        .sub-text{
+            color:#ddd;
+            font-size:16px;
+            margin-bottom:8px;
+        }
+
+        /* 👥 Viewer count */
+        .viewer-bar{
+            display:inline-flex;
+            align-items:center;
+            gap:7px;
+            background:rgba(255,255,255,0.08);
+            border:1px solid rgba(255,255,255,0.15);
+            border-radius:30px;
+            padding:6px 16px;
+            font-size:13px;
+            color:#aaffaa;
+            margin-bottom:8px;
+        }
+
+        .viewer-dot{
+            width:8px;height:8px;
+            border-radius:50%;
+            background:#00ff88;
+            box-shadow:0 0 6px #00ff88;
+            animation:blink 1s infinite;
+            flex-shrink:0;
+        }
+
+        /* Countdown bar */
+        .countdown-bar{
+            background:rgba(255,255,255,0.1);
+            border:1px solid rgba(255,255,255,0.2);
+            border-radius:30px;
+            padding:7px 20px;
+            font-size:14px;
+            color:#ffd700;
+            margin-bottom:14px;
+            display:inline-block;
+        }
+
+        /* 🔥 PLAYER BOX */
+        .player-box{
+            position:relative;
+            width:92%;
+            max-width:680px;
+            margin:0 auto;
+            border-radius:18px;
+            overflow:hidden;
+            box-shadow:0 0 30px rgba(255,0,0,0.55), 0 0 80px rgba(255,0,0,0.25);
+            aspect-ratio:16/9;
+            background:#000;
+        }
+
+        .player-thumb{
+            position:absolute;
+            inset:0;
+            z-index:2;
+            cursor:pointer;
+        }
+
+        .player-thumb img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            display:block;
+        }
+
+        .player-overlay{
+            position:absolute;
+            inset:0;
+            background:linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.15));
+        }
+
+        .yt-iframe{
+            position:absolute;
+            inset:0;
+            width:100%;
+            height:100%;
+            border:none;
+            z-index:1;
+            display:none;
+        }
+
+        .play-btn{
+            position:absolute;
+            top:50%;left:50%;
+            transform:translate(-50%,-50%);
+            width:100px;height:100px;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:rgba(255,255,255,0.12);
+            backdrop-filter:blur(10px);
+            border:2px solid rgba(255,255,255,0.28);
+            box-shadow:0 0 25px rgba(255,0,0,0.6), 0 0 60px rgba(255,0,0,0.45);
+            animation:pulseGlow 1.8s infinite;
+            cursor:pointer;
+            z-index:3;
+        }
+
+        .play-icon{
+            color:#fff;
+            font-size:46px;
+            margin-left:8px;
+            text-shadow:0 0 12px rgba(255,255,255,0.95);
+        }
+
+        @keyframes pulseGlow{
+            0%{box-shadow:0 0 15px rgba(255,0,0,0.45), 0 0 40px rgba(255,0,0,0.22);}
+            50%{box-shadow:0 0 45px rgba(255,0,0,0.95), 0 0 85px rgba(255,0,0,0.58);}
+            100%{box-shadow:0 0 15px rgba(255,0,0,0.45), 0 0 40px rgba(255,0,0,0.22);}
+        }
+
+        .desc{
+            margin-top:14px;
+            color:#ddd;
+            font-size:16px;
+        }
+
+        .cta-btn{
+            display:inline-block;
+            margin-top:16px;
+            padding:16px 36px;
+            font-size:18px;
+            font-weight:bold;
+            color:#fff;
+            text-decoration:none;
+            border-radius:60px;
+            background:linear-gradient(45deg, #ff0000, #ff6a00);
+            box-shadow:0 0 20px rgba(255,0,0,0.75), 0 0 50px rgba(255,80,0,0.45);
+            animation:pulseBtn 1.3s infinite;
+        }
+
+        @keyframes pulseBtn{
+            0%{transform:scale(1);}
+            50%{transform:scale(1.06);}
+            100%{transform:scale(1);}
+        }
+
+        @media(max-width:768px){
+            h1{font-size:26px;}
+            .play-btn{width:80px;height:80px;}
+            .play-icon{font-size:36px;}
+            .cta-btn{font-size:16px;padding:14px 28px;}
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Banner Atas 320x50 -->
+<div class="banner-top">
+    <script>
+      atOptions = {
+        'key' : 'f0a9357fc524712b4e1f8906d53dbe9f',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/f0a9357fc524712b4e1f8906d53dbe9f/invoke.js"></script>
+</div>
+
+<div class="container">
+
+    <!-- Live badge → smartlink 1 -->
+    <a class="live-badge" href="https://www.effectivecpmnetwork.com/a1spydzsci?key=866c161482a1edff7aed8b286d438fb4" target="_blank">🔴 LIVE NOW</a>
+
+    <h1>Watch Live HD Sports</h1>
+    <p class="sub-text">Premium Live Streaming • No Buffer • HD Quality</p>
+
+    <!-- Viewer count -->
+    <div class="viewer-bar">
+        <span class="viewer-dot"></span>
+        <span id="viewerCount">1,024</span> watching now
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown-bar">⏱ Stream opens in <span id="timer">10</span> detik...</div>
+
+    <!-- Player Box -->
+    <div class="player-box">
+        <iframe
+            id="ytFrame"
+            class="yt-iframe"
+            src=""
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+        </iframe>
+
+        <!-- Thumbnail + play → smartlink 2 -->
+        <div class="player-thumb" id="thumbLayer" onclick="playVideo()">
+            <img src="tes2.webp" alt="Live Sports">
+            <div class="player-overlay"></div>
+            <div class="play-btn">
+                <span class="play-icon">▶</span>
+            </div>
+        </div>
+    </div>
+
+    <p class="desc">Watch unlimited live sports streams instantly.</p>
+
+    <!-- CTA button → smartlink 3 -->
+    <a class="cta-btn" href="https://www.effectivecpmnetwork.com/bnakxjp1?key=5ef73cf852accd13f7b29b65ad5c0771" target="_blank">
+        ▶ WATCH LIVE NOW
+    </a>
+
+    <!-- Banner Bawah 728x90 -->
+    <div class="banner-bottom">
+        <script>
+          atOptions = {
+            'key' : 'd95408cf651958681e0159f8c3b4a8d9',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highperformanceformat.com/d95408cf651958681e0159f8c3b4a8d9/invoke.js"></script>
+    </div>
+
+</div>
+
+<script>
+    // Smartlink per elemen
+    const SL1 = 'https://www.effectivecpmnetwork.com/a1spydzsci?key=866c161482a1edff7aed8b286d438fb4'; // live badge
+    const SL2 = 'https://www.effectivecpmnetwork.com/wuh63wbf?key=ea01fbb3e9d1be2edd5817cf004f1379';   // play button
+    const SL3 = 'https://www.effectivecpmnetwork.com/bnakxjp1?key=5ef73cf852accd13f7b29b65ad5c0771';   // CTA button
+    const SL4 = 'https://www.effectivecpmnetwork.com/sr7xky09e?key=37ef7743df0e688b7d9920221213d267';  // countdown
+
+    const YT_VIDEO_ID = 'i46ZDPTU4kE';
+
+    // --- Countdown → new tab (tidak menimpa lander) ---
+    let seconds = 15;
+    const timerEl = document.getElementById('timer');
+    const countdownBar = document.querySelector('.countdown-bar');
+
+    const countdown = setInterval(() => {
+        seconds--;
+        timerEl.textContent = seconds;
+        if (seconds <= 0) {
+            clearInterval(countdown);
+            window.open(SL4, '_blank');
+            countdownBar.innerHTML = '✅ Stream opened! Enjoy watching 🎉';
+        }
+    }, 1000);
+
+    // --- Play button → YouTube embed + smartlink 2 new tab ---
+    function playVideo() {
+        const frame = document.getElementById('ytFrame');
+        frame.src = 'https://www.youtube.com/embed/' + YT_VIDEO_ID + '?autoplay=1&mute=0&rel=0';
+        frame.style.display = 'block';
+        document.getElementById('thumbLayer').style.display = 'none';
+        window.open(SL2, '_blank');
+    }
+
+    // --- Viewer count: mulai 1024, naik turun random ---
+    let viewers = 1024;
+    const viewerEl = document.getElementById('viewerCount');
+
+    function formatViewers(n) {
+        return n.toLocaleString('en-US');
+    }
+
+    viewerEl.textContent = formatViewers(viewers);
+
+    setInterval(() => {
+        // naik atau turun random -8 sampai +12
+        const delta = Math.floor(Math.random() * 21) - 8;
+        viewers = Math.max(980, viewers + delta);
+        viewerEl.textContent = formatViewers(viewers);
+    }, 3000);
+</script>
+
+</body>
+</html>
