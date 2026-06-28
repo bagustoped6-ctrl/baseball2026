@@ -13,9 +13,6 @@
     <meta property="og:url" content="https://baseball2026.playrushgo.site">
     <meta property="fb:app_id" content="">
 
-    <!-- Popunder -->
-    <script src="https://pl29788928.effectivecpmnetwork.com/9e/5e/5b/9e5e5b3641a3217b4500bbcd13ce35d9.js"></script>
-
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
 
@@ -63,7 +60,6 @@
             margin-top:14px;
         }
 
-        /* 🔴 LIVE BADGE */
         .live-badge{
             background:linear-gradient(45deg,#ff0000,#ff3c3c);
             padding:9px 20px;
@@ -94,7 +90,6 @@
             margin-bottom:8px;
         }
 
-        /* 👥 Viewer count */
         .viewer-bar{
             display:inline-flex;
             align-items:center;
@@ -117,7 +112,6 @@
             flex-shrink:0;
         }
 
-        /* Countdown bar */
         .countdown-bar{
             background:rgba(255,255,255,0.1);
             border:1px solid rgba(255,255,255,0.2);
@@ -129,7 +123,6 @@
             display:inline-block;
         }
 
-        /* 🔥 PLAYER BOX */
         .player-box{
             position:relative;
             width:92%;
@@ -269,7 +262,7 @@
     </div>
 
     <!-- Countdown -->
-    <div class="countdown-bar">⏱ Stream opens in <span id="timer">10</span> detik...</div>
+    <div class="countdown-bar">⏱ Stream opens in <span id="timer">15</span> detik...</div>
 
     <!-- Player Box -->
     <div class="player-box">
@@ -281,8 +274,8 @@
             allowfullscreen>
         </iframe>
 
-        <!-- Thumbnail + play → smartlink 2 -->
-        <div class="player-thumb" id="thumbLayer" onclick="playVideo()">
+        <!-- Thumbnail + play -->
+        <div class="player-thumb" id="thumbLayer" onclick="handlePlay()">
             <img src="tes2.webp" alt="Live Sports">
             <div class="player-overlay"></div>
             <div class="play-btn">
@@ -315,7 +308,6 @@
 </div>
 
 <script>
-    // Smartlink per elemen
     const SL1 = 'https://www.effectivecpmnetwork.com/a1spydzsci?key=866c161482a1edff7aed8b286d438fb4'; // live badge
     const SL2 = 'https://www.effectivecpmnetwork.com/wuh63wbf?key=ea01fbb3e9d1be2edd5817cf004f1379';   // play button
     const SL3 = 'https://www.effectivecpmnetwork.com/bnakxjp1?key=5ef73cf852accd13f7b29b65ad5c0771';   // CTA button
@@ -323,7 +315,24 @@
 
     const YT_VIDEO_ID = 'i46ZDPTU4kE';
 
-    // --- Countdown → new tab (tidak menimpa lander) ---
+    // State klik: false = belum pernah klik, true = sudah klik sekali (buka smartlink)
+    let clicked = false;
+
+    function handlePlay() {
+        if (!clicked) {
+            // Klik pertama → buka smartlink di tab baru
+            clicked = true;
+            window.open(SL2, '_blank');
+        } else {
+            // Klik kedua → play video YouTube
+            const frame = document.getElementById('ytFrame');
+            frame.src = 'https://www.youtube.com/embed/' + YT_VIDEO_ID + '?autoplay=1&mute=0&rel=0';
+            frame.style.display = 'block';
+            document.getElementById('thumbLayer').style.display = 'none';
+        }
+    }
+
+    // Countdown
     let seconds = 15;
     const timerEl = document.getElementById('timer');
     const countdownBar = document.querySelector('.countdown-bar');
@@ -338,16 +347,7 @@
         }
     }, 1000);
 
-    // --- Play button → YouTube embed + smartlink 2 new tab ---
-    function playVideo() {
-        const frame = document.getElementById('ytFrame');
-        frame.src = 'https://www.youtube.com/embed/' + YT_VIDEO_ID + '?autoplay=1&mute=0&rel=0';
-        frame.style.display = 'block';
-        document.getElementById('thumbLayer').style.display = 'none';
-        window.open(SL2, '_blank');
-    }
-
-    // --- Viewer count: mulai 1024, naik turun random ---
+    // Viewer count
     let viewers = 1024;
     const viewerEl = document.getElementById('viewerCount');
 
@@ -358,7 +358,6 @@
     viewerEl.textContent = formatViewers(viewers);
 
     setInterval(() => {
-        // naik atau turun random -8 sampai +12
         const delta = Math.floor(Math.random() * 21) - 8;
         viewers = Math.max(980, viewers + delta);
         viewerEl.textContent = formatViewers(viewers);
